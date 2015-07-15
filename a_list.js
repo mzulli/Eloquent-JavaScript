@@ -39,11 +39,12 @@ function nth(list, number) {
 }
 
 function nthR(list, number) {
-  while (list.rest !== null) {
-    list = list.rest;
-    number = number - 1;
-  }
-  if (number === 0) return list.value;
+  if (!list)
+    return undefined;
+  else if (number === 0)
+    return list.value;
+  else
+    return nthR(list.rest, number - 1);
 }
 
 console.log(arrayToList([10, 20]));
