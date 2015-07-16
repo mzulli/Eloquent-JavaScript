@@ -19,15 +19,26 @@ ancestry.forEach(function(person) {
 });
 
 // Your code here.
-var hasKnownMother = ancestry.filter(function(person) {
-  return person.mother != null;
+function average(array) {
+  function plus(a, b) { return a + b; }
+  return array.reduce(plus) / array.length;
+}
+
+var byName = {};
+ancestry.forEach(function(person) {
+  byName[person.name] = person;
 });
-hasKnownMother.forEach(function(person) {
-  var mother = byName[person.mother];
-  person.motherAge = person.born - mother.born
-});
-  
-  
-console.log(hasKnownMother);
+
+// Your code here.
+var hasKnownMother = function(person) {
+    return person.mother in byName;
+};
+ 
+function getAgeDiff(person) {
+    return person.born - byName[person.mother].born;
+}
+ 
+console.log(average(ancestry.filter(hasKnownMother).map(getAgeDiff)));
+// → 31.2
 
 // → 31.2
