@@ -1,6 +1,6 @@
-function average(array) {
+function averageOneDec(array) {
   function plus(a, b) { return a + b; }
-  return array.reduce(plus) / array.length;
+  return Math.round(array.reduce(plus) / array.length * 10)/10;
 }
 
 // Your code here.
@@ -10,11 +10,11 @@ ancestry.forEach(function(person) {
   var century = Math.ceil(person.died / 100);
   if (!(century in byCentury))
     byCentury[century] = [];
-  byCentury[century].push(age);
+  	byCentury[century].push(age);
 });
 
 for (century in byCentury) {
-  console.log(century + ": " + average(byCentury[century]));
+  console.log(century + ": " + averageOneDec(byCentury[century]));
 }
 
 // → 16: 43.5
