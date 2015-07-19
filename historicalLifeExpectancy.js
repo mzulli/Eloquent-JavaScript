@@ -10,7 +10,7 @@ ancestry.forEach(function(person) {
   var century = Math.ceil(person.died / 100);
   if (!(century in byCentury))
     byCentury[century] = [];
-  	byCentury[century].push(age);
+  byCentury[century].push(age);
 });
 
 for (century in byCentury) {
